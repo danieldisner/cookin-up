@@ -1,5 +1,5 @@
 <script lang="ts">
-import SelectIngredient from './SelectIngredient.vue';
+import SelectIngredient from './SelectIngredients.vue';
 
 export default {
     data() {
@@ -10,6 +10,25 @@ export default {
     components: { SelectIngredient }
 }
 </script>
+<template>
+    <main class="main-content">
+        <section>
+            <span class="subtitle-lg text-list">
+                Your List
+            </span>
+            <ul v-if="ingredients.length" class="ingredients-list">
+                <li v-for="ingredient in ingredients" v-bind:key="ingredient" class="ingredient">
+                    {{ ingredient }}
+                </li>
+            </ul>
+            <p v-else class="paragraph empty-list">
+                <img src="../assets/images/icons/empty-list.svg" alt="Ícone de pesquisa">
+                Your list is empty, please, select some ingredients.
+            </p>
+        </section>
+        <SelectIngredient />
+    </main>
+</template>
 <style scoped>
 .main-content {
     padding: 6.5rem 7.5rem;
@@ -54,7 +73,6 @@ export default {
     align-items: center;
     flex-wrap: wrap;
     gap: 0.25rem;
-
     color: var(--coral, #F0633C);
     text-align: center;
 }
@@ -72,24 +90,4 @@ export default {
         gap: 4rem;
     }
 }
-</style>
-
-<template>
-    <main class="main-content">
-        <section>
-            <span class="subtitle-lg text-list">
-                Your List
-            </span>
-            <ul v-if="ingredients.length" class="ingredients-list">
-                <li v-for="ingredient in ingredients" v-bind:key="ingredient" class="ingrediente">
-                    {{ ingredient }}
-                </li>
-            </ul>
-            <p v-else class="paragraph empty-list">
-                <img src="../assets/images/icons/empty-list.svg" alt="Ícone de pesquisa">
-                Your list is empty, please, select some ingredients.
-            </p>
-        </section>
-        <SelectIngredient />
-    </main>
-</template>
+</style>./SelectIngredients.vue
