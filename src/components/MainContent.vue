@@ -1,31 +1,19 @@
 <script lang="ts">
 import SelectIngredient from './SelectIngredients.vue';
-
+import Tag from './Tag.vue';
+import IngredientsList from './IngredientsList.vue';
 export default {
     data() {
         return {
             ingredients: ['Alho', 'Manteiga', 'Orégano', 'Batata', 'Macarrão']
         };
     },
-    components: { SelectIngredient }
+    components: { SelectIngredient, Tag, IngredientsList }
 }
 </script>
 <template>
     <main class="main-content">
-        <section>
-            <span class="subtitle-lg text-list">
-                Your List
-            </span>
-            <ul v-if="ingredients.length" class="ingredients-list">
-                <li v-for="ingredient in ingredients" v-bind:key="ingredient" class="ingredient">
-                    {{ ingredient }}
-                </li>
-            </ul>
-            <p v-else class="paragraph empty-list">
-                <img src="../assets/images/icons/empty-list.svg" alt="Ícone de pesquisa">
-                Your list is empty, please, select some ingredients.
-            </p>
-        </section>
+        <IngredientsList :ingredients="ingredients" />
         <SelectIngredient />
     </main>
 </template>
@@ -53,18 +41,6 @@ export default {
     justify-content: center;
     gap: 1rem 1.5rem;
     flex-wrap: wrap;
-}
-
-.ingredient {
-    display: inline-block;
-    border-radius: 0.5rem;
-    min-width: 4.25rem;
-    padding: 0.5rem;
-    text-align: center;
-    transition: 0.2s;
-    color: var(--creme, #FFFAF3);
-    background: var(--coral, #F0633C);
-    font-weight: 700;
 }
 
 .empty-list {
