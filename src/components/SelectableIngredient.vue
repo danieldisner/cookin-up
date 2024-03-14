@@ -10,11 +10,22 @@ export default {
         return {
             selected: false
         }
-    }
+    },
+    methods: {
+        onClick() {
+            this.selected = !this.selected;
+            if (this.selected) {
+                this.$emit('addIngredient', this.ingredient);
+            } else {
+                this.$emit('remIngredient', this.ingredient);
+            }
+        }
+    },
+    emits: ['addIngredient', 'remIngredient']
 }
 </script>
 <template>
-    <button class="ingredient" @:click="selected = !selected">
+    <button class="ingredient" @:click="onClick()">
         <Tag :text="ingredient" :active="selected" />
     </button>
 </template>

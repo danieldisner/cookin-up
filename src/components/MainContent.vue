@@ -5,16 +5,24 @@ import IngredientsList from './IngredientsList.vue';
 export default {
     data() {
         return {
-            ingredients: ['Alho', 'Manteiga', 'Orégano', 'Batata', 'Macarrão']
+            ingredients: [] as string[]
         };
     },
-    components: { SelectIngredient, Tag, IngredientsList }
+    components: { SelectIngredient, Tag, IngredientsList },
+    methods: {
+        addIngredient(ingredient: string) {
+            this.ingredients.push(ingredient)
+        },
+        remIngredient(ingredient: string) {
+            this.ingredients = this.ingredients.filter(iList => ingredient !== iList);
+        }
+    }
 }
 </script>
 <template>
     <main class="main-content">
         <IngredientsList :ingredients="ingredients" />
-        <SelectIngredient />
+        <SelectIngredient @add-ingredient="addIngredient" @rem-ingredient="remIngredient" />
     </main>
 </template>
 <style scoped>

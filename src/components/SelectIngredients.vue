@@ -4,9 +4,6 @@ import type ICategory from '@/interfaces/ICategory';
 import CardCategory from '@/components/CardCategory.vue';
 
 export default {
-    components: {
-        CardCategory // Register the CardCategory component locally
-    },
     data() {
         return {
             categories: [] as ICategory[]
@@ -14,7 +11,9 @@ export default {
     },
     async created() {
         this.categories = await getCategories();
-    }
+    },
+    components: { CardCategory },
+    emits: ['addIngredient', 'remIngredient']
 }
 </script>
 
@@ -26,7 +25,8 @@ export default {
         </p>
         <ul class="categories">
             <li v-for="category in categories" :key="category.name">
-                <CardCategory :category="category" />
+                <CardCategory :category="category" @add-ingredient="$emit('addIngredient', $event)"
+                    @rem-ingredient="$emit('remIngredient', $event)" />
             </li>
         </ul>
 
