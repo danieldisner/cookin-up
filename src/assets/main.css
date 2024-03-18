@@ -9,8 +9,8 @@
   --light-gray: #efefef;
   --white: #fff;
 
-  --font-family-padrao: Nunito Sans, sans-serif;
-  --cabecalhos: Paytone One, sans-serif;
+  --font-family-standard: Nunito Sans, sans-serif;
+  --headers: Paytone One, sans-serif;
 }
 
 *,
@@ -34,8 +34,8 @@ button {
 
 body {
   min-height: 100vh;
-  color: var(--creme);
-  font-family: var(--font-family-padrao);
+  color: var(--cream);
+  font-family: var(--font-family-standard);
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
@@ -43,13 +43,13 @@ body {
 }
 
 .header-lg {
-  font-family: var(--cabecalhos);
+  font-family: var(--headers);
   font-size: 3.35625em;
   line-height: 120%; /* 4.0275em */
 }
 
 .header {
-  font-family: var(--cabecalhos);
+  font-family: var(--headers);
   font-size: 2.75em;
   line-height: 120%; /* 3.3em */
 }

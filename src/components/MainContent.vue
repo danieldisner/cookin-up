@@ -29,8 +29,8 @@ export default {
 .main-content {
     padding: 6.5rem 7.5rem;
     border-radius: 3.75rem 3.75rem 0rem 0rem;
-    background: var(--creme, #FFFAF3);
-    color: var(--cinza, #444);
+    background: var(--cream, #FFFAF3);
+    color: var(--grey, #444);
     display: flex;
     flex-direction: column;
     align-items: center;

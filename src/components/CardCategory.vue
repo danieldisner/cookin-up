@@ -35,7 +35,7 @@ export default {
     width: 19.5rem;
     padding: 1rem;
     border-radius: 1rem;
-    background: var(--branco, #FFF);
+    background: var(--white, #FFF);
     box-shadow: 4px 4px 10px 0px rgba(68, 68, 68, 0.05);
     height: 100%;
 
@@ -58,7 +58,7 @@ export default {
 
 .category__name {
     text-align: center;
-    color: var(--verde-medio, #3D6D4A);
+    color: var(--medium-green, #3D6D4A);
     font-weight: 700;
 }
 

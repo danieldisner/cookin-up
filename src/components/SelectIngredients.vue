@@ -2,6 +2,7 @@
 import { getCategories } from '@/http/index';
 import type ICategory from '@/interfaces/ICategory';
 import CardCategory from '@/components/CardCategory.vue';
+import SearchButton from './SearchButton.vue';
 
 export default {
     data() {
@@ -12,7 +13,7 @@ export default {
     async created() {
         this.categories = await getCategories();
     },
-    components: { CardCategory },
+    components: { CardCategory, SearchButton },
     emits: ['addIngredient', 'remIngredient']
 }
 </script>
@@ -30,9 +31,10 @@ export default {
             </li>
         </ul>
 
-        <ul class="paragraph hint">
+        <p class="paragraph hint">
             *Attention: we assume you have salt, pepper and water at home.
-        </ul>
+        </p>
+        <SearchButton text="Search Recipes" />
     </section>
 </template>
 
@@ -44,7 +46,7 @@ export default {
 }
 
 .ingredients-title {
-    color: var(--verde-medio, #3D6D4A);
+    color: var(--medium-green, #3D6D4A);
     display: block;
     margin-bottom: 1.5rem;
 }
@@ -62,7 +64,8 @@ export default {
 }
 
 .hint {
-    align-self: flex-start;
+    vertical-align: middle;
+    align-self: center;
     margin-bottom: 3.5rem;
 }
 
