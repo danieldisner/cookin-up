@@ -4,7 +4,7 @@ import type IRecipe from '@/interfaces/IRecipe';
 import SearchButton from './SearchButton.vue';
 import CardRecipe from './CardRecipe.vue';
 import type { PropType } from 'vue';
-import { itensListCheck } from '@/operations/lists';
+import { itensListCheck } from '@/operations/Lists';
 
 export default {
     props: {
@@ -17,14 +17,8 @@ export default {
     },
     async created() {
         const recipes = await getRecipes();
-
         this.recipesFound = recipes.filter((recipe) => {
-            // Lógica que verifica se posso fazer receita:
-            // Todos os ingredientes de uma receita devem estar inclusos na minha lista de ingredientes
-            // Se sim, devemos retornar 'true'
-
             const canICook = itensListCheck(recipe.ingredients, this.ingredients);
-
             return canICook;
         });
     },
