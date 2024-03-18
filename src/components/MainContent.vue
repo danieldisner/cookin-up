@@ -2,27 +2,44 @@
 import SelectIngredient from './SelectIngredients.vue';
 import Tag from './Tag.vue';
 import IngredientsList from './IngredientsList.vue';
+import ShowRecipes from './ShowRecipes.vue';
+
+type Page = 'SelectIngredients' | 'ShowRecipes';
+
 export default {
     data() {
         return {
-            ingredients: [] as string[]
+            ingredients: [] as string[],
+            content: 'SelectIngredients' as Page
         };
     },
-    components: { SelectIngredient, Tag, IngredientsList },
+    components: { SelectIngredient, Tag, IngredientsList, ShowRecipes },
     methods: {
         addIngredient(ingredient: string) {
             this.ingredients.push(ingredient)
         },
         remIngredient(ingredient: string) {
             this.ingredients = this.ingredients.filter(iList => ingredient !== iList);
+        },
+        navigate(page: Page) {
+            this.content = page;
         }
     }
 }
 </script>
 <template>
     <main class="main-content">
-        <IngredientsList :ingredients="ingredients" />
-        <SelectIngredient @add-ingredient="addIngredient" @rem-ingredient="remIngredient" />
+        <KeepAlive include="SelectIngredients">
+            <IngredientsList :ingredients="ingredients" />
+        </KeepAlive>
+        <KeepAlive include="SelectIngredients">
+            <SelectIngredient v-if="content === 'SelectIngredients'" @add-ingredient="addIngredient"
+                @rem-ingredient="remIngredient" @search-recipes="navigate('ShowRecipes')" />
+
+            <ShowRecipes v-else-if="content === 'ShowRecipes'" :ingredients="ingredients"
+                @edit-recipes="navigate('SelectIngredients')" />
+        </KeepAlive>
+
     </main>
 </template>
 <style scoped>
@@ -74,4 +91,4 @@ export default {
         gap: 4rem;
     }
 }
-</style>./SelectIngredients.vue
+</style>

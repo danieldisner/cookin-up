@@ -5,6 +5,7 @@ import CardCategory from '@/components/CardCategory.vue';
 import SearchButton from './SearchButton.vue';
 
 export default {
+    name: 'SelectIngredients',
     data() {
         return {
             categories: [] as ICategory[]
@@ -14,7 +15,7 @@ export default {
         this.categories = await getCategories();
     },
     components: { CardCategory, SearchButton },
-    emits: ['addIngredient', 'remIngredient']
+    emits: ['addIngredient', 'remIngredient', 'searchRecipes']
 }
 </script>
 
@@ -34,7 +35,7 @@ export default {
         <p class="paragraph hint">
             *Attention: we assume you have salt, pepper and water at home.
         </p>
-        <SearchButton text="Search Recipes" />
+        <SearchButton text="Search Recipes" @click="$emit('searchRecipes')" />
     </section>
 </template>
 
