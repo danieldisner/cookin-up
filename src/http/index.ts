@@ -5,7 +5,7 @@ import type IRecipe from "@/interfaces/IRecipe";
 async function getUrlData<T>(url: string) {
     const response = await fetch(url);
     return response.json() as T;
-  }
+}
 
 export async function getCategories(): Promise<ICategory[]> {
     const categoriesData: ICategory[] = await getUrlData<ICategory[]>('https://gist.githubusercontent.com/antonio-evaldo/002ad55e1cf01ef3fc6ee4feb9152964/raw/86802bed06855cdccc9247dd1fa175c6ccea7dda/categorias.json');
@@ -30,4 +30,5 @@ export async function getRecipes() {
         ingredients: recipe.ingredientes,
         image: recipe.imagem
     }));
-    return recipes;}
+    return recipes;
+}
